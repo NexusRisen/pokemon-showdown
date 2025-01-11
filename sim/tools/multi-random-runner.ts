@@ -21,7 +21,7 @@ export interface MultiRandomRunnerOptions extends RunnerOptions {
 export class MultiRandomRunner {
 	static readonly FORMATS = [
 		'gen8randombattle', 'gen8randomdoublesbattle', 'gen8battlefactory',
-		'gen7randombattle', 'gen7randomdoublesbattle', 'gen7battlefactory',
+		'gen7randombattle', 'gen7battlefactory',
 		'gen6randombattle', 'gen6battlefactory',
 		'gen5randombattle',
 		'gen4randombattle',
@@ -71,7 +71,7 @@ export class MultiRandomRunner {
 				games = [];
 			}
 
-			const seed = this.prng.seed;
+			const seed = this.prng.getSeed();
 			const game = new Runner({format, ...this.options}).run().catch(err => {
 				failures++;
 				console.error(
